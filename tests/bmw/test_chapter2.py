@@ -1,7 +1,8 @@
 import pytest
 import numpy as np
 
-from bmw.chapter2 import elorb,Elorb
+from bmw import su_to_cu
+from bmw.chapter2 import elorb, Elorb, herrick_gibbs
 
 
 @pytest.mark.parametrize(
@@ -15,5 +16,24 @@ from bmw.chapter2 import elorb,Elorb
 def test_elorb(rv,vv,ref_elorb):
     this_elorb=elorb(rv,vv)
     assert np.allclose(this_elorb,ref_elorb,equal_nan=True)
+
+
+def test_herrick_gibbs():
+    rr1=np.array([3419.85564,6019.82602,2784.60022])
+    rr2=np.array([2935.91195,6326.18324,2660.59584])
+    rr3=np.array([2434.95205,6597.38674,2521.52311])
+    t1=0
+    t2=1*60+16.48
+    t3=2*60+33.04
+    re=6378.1363
+    mu=398600.4415
+    rr1_cu=su_to_cu(rr1,re,mu,1, 0)
+    rr2_cu=su_to_cu(rr2,re,mu,1, 0)
+    rr3_cu=su_to_cu(rr3,re,mu,1, 0)
+    t1_cu =su_to_cu(t1 ,re,mu,0, 1)
+    t2_cu =su_to_cu(t2 ,re,mu,0, 1)
+    t3_cu =su_to_cu(t3 ,re,mu,0, 1)
+    vv2_cu=herrick_gibbs(rr1_cu,rr2_cu,rr3_cu,t1_cu,t2_cu,t3_cu)
+    vv2=su_to_cu(vv2_cu,re,mu,1,-1,inverse=True)
 
 

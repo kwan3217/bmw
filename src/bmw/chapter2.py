@@ -97,3 +97,37 @@ def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float
     return Elorb(p=p, a=a, e=e, i=i, an=an, ap=ap, ta=ta, tp=tp, rp=rp, MM=MM, n=n, t=t)
 
 
+def herrick_gibbs(rr1:np.ndarray,rr2:np.ndarray,rr3:np.ndarray,
+                  t1:float,t2:float,t3:float,mu:float=1):
+    """
+    Given three closely-spaced position observations, calculate the
+    velocity at the middle observation. From Vallado p444, algorithm 52
+
+    This is much less computationally intensive than the Gauss method,
+    and has a better chance of numerical stability.
+
+    :param rr1: Position vector at t1
+    :param rr2: Position vector at t2
+    :param rr3: Position vector at t3
+    :param t1:  Time of first position vector
+    :param t2:  Time of second position vector
+    :param t3:  Time of third position vector
+    :param mu:  Gravitational parameter
+    :return:    Velocity at t2
+    """
+    dt31=t3-t1
+    dt32=t3-t2
+    dt21=t2-t1
+    r1=vlength(rr1)
+    r2=vlength(rr2)
+    r3=vlength(rr3)
+    #Coplanarity (not strictly needed)
+    Z23=vcross(rr2,rr3)
+    alpha_cop=np.pi/2-vangle(Z23,rr1)
+    #position spread (not strictly needed)
+    cosalpha12=np.dot(rr1,rr2)/(r1*r2)
+    cosalpha23=np.dot(rr2,rr3)/(r2*r3)
+    vv2=      -dt32 *(1/(dt21*dt31)+mu/(12*r1**3))*rr1+\
+         (dt32-dt21)*(1/(dt21*dt32)+mu/(12*r2**3))*rr2+\
+               dt21 *(1/(dt32*dt31)+mu/(12*r3**3))*rr3
+    return vv2
