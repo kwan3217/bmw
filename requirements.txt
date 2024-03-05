@@ -1,2 +1,0 @@
-numpy
--e git+ssh://git@github.com/kwan3217/kwanmath.git#egg=kwanmath
