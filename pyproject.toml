@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bmw"
+version = "0.1.0"
+authors = [
+  { name="kwan3217", email="kwan3217@gmail.com" },
+]
+description = "Algorithms from Bate, Mueller, and White"
+readme = "README.md"
+requires-python = ">=3.10"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: BSD License",
+    "Operating System :: OS Independent",
+]
+dependencies=[
+    "numpy",
+    "kwanmath @ git+ssh://git@github.com/kwan3217/kwanmath.git"
+]
+
+[project.urls]
+Homepage = "https://github.com/kwan3217/bmw/"
+Issues = "https://github.com/kwan3217/bmw/issues"
