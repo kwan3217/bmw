@@ -2,25 +2,6 @@
 Algorithms for solving the Kepler and Gauss problems. the two fundamental problems in
 two-body mechanics
 
-The <i>Kepler Problem</i>, or prediction problem, is as follows: Given the GM of the
-central body, and the position and velocity of a test particle of negligible mass at 
-one time, find the position and velocity at any other time.
-
-The <i>Gauss Problem</i>, or targeting problem, is as follows: Given the GM of the 
-central body, the position at which a test particle is now, the target position where
-it will be, and the time between the postions, find the velocity of the particle at 
-both points such that it will travel from the initial position to the target position
-in the given time.
-
-This basically follows the Universal Variable formation found in Bate, Muller, and White
-chapters 4 and 5.
-
-These algorithms make use of canonical units. Canonical units are distance and time units
-relating to a particular central body, such that the GM of that body is 1. In canonical 
-units, an object in a circular orbit of radius one Distance Unit (DU) has a speed of
-one DU per Time Unit (TU), and therefore an angular velocity of one radian per TU. The 
-length of a DU is arbitrary, but is customarily the radius of the central body for planets
-and moons, and 1 AU for the Sun.   
 """
 
 import numpy as np

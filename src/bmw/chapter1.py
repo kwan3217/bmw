@@ -1,5 +1,12 @@
 """
 Bate, Mueller, White chapter 1 -- Canonical units
+
+These algorithms make use of canonical units. Canonical units are distance and time units
+relating to a particular central body, such that the GM of that body is 1. In canonical
+units, an object in a circular orbit of radius one Distance Unit (DU) has a speed of
+one DU per Time Unit (TU), and therefore an angular velocity of one radian per TU. The
+length of a DU is arbitrary, but is customarily the radius of the central body for planets
+and moons, and 1 AU for the Sun.
 """
 
 import numpy as np

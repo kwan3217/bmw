@@ -2,6 +2,13 @@
 Bate, Mueller, White chapter 5 -- Solve the targeting problem.
 In BMW this is called the Gauss problem, and in other contexts
 this is called the Lambert problem.
+
+The <i>Gauss Problem</i>, or targeting problem, is as follows: Given the GM of the
+central body, the position at which a test particle is now, the target position where
+it will be, and the time between the postions, find the velocity of the particle at
+both points such that it will travel from the initial position to the target position
+in the given time.
+
 """
 import numpy as np
 from kwanmath.vector import vangle, vlength, vdot, vcross

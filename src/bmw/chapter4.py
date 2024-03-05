@@ -1,5 +1,10 @@
 """
 Bate, Mueller, White chapter 4 -- Propagation of state vector (Kepler problem)
+
+The <i>Kepler Problem</i>, or prediction problem, is as follows: Given the GM of the
+central body, and the position and velocity of a test particle of negligible mass at
+one time, find the position and velocity at any other time.
+
 """
 import numpy as np
 from kwanmath.vector import vlength, vdot, vcross
