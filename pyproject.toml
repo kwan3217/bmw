@@ -21,6 +21,11 @@ dependencies=[
     "kwanmath @ git+ssh://git@github.com/kwan3217/kwanmath.git"
 ]
 
+[project.optional-dependencies]
+test=[
+    "pytest"
+]
+
 [project.urls]
 Homepage = "https://github.com/kwan3217/bmw/"
 Issues = "https://github.com/kwan3217/bmw/issues"
