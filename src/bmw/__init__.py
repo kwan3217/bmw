@@ -4,10 +4,6 @@ two-body mechanics
 
 """
 
-import numpy as np
-from collections import namedtuple
-import math
-
 from .chapter1 import su_to_cu
 from .chapter2 import elorb,Elorb,herrick_gibbs
 from .chapter4 import kepler
