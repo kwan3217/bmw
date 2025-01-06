@@ -32,6 +32,7 @@ from .chapter1 import su_to_cu
 
 Elorb = namedtuple('elorb', ['p', 'a', 'e', 'i', 'an', 'ap', 'ta', 'tp', 'rp', 'MM', 'n', 't'])
 
+
 def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float=None)->Elorb:
     """
     Given state vector, calculate orbital elements.
@@ -41,15 +42,18 @@ def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float
     :param vv: inertial velocity vector, distance and time units implied by mu, must be in same frame as rv
     :param l_DU: length of a distance unit, used for conversion to canonical units internally. Default is to assume
                  that the units are already canonical.
-    :param mu: Gravity parameter, implies distance and time units. Only used for canonical unit conversion, and therefore
-               ignored if l_DU is not passed.
+    :param mu: Gravity parameter, implies distance and time units. Only used for canonical unit conversion, and
+               therefore ignored if l_DU is not passed.
+    :param t0: If passed, use this as the reference epoch for time of periapse
     return
       a named tuple
-        p:  semi-parameter, distance from focus to orbit at TA=+-90deg, in original distance units, always positive for any eccentricity
+        p:  semi-parameter, distance from focus to orbit at TA=+-90deg, in original distance units, always positive for
+            any eccentricity
         a:  semimajor axis, in original distance units
         e:  eccentricity
         i:  inclination, radians
-        an: longitude of ascending node, angle between x axis and line of intersection between orbit plane and xy plane, radians
+        an: longitude of ascending node, angle between x axis and line of intersection between orbit plane and xy
+            plane, radians
         ap: argument of periapse, angle between xy plane and periapse along orbit plane, radians
         ta: true anomaly, angle between periapse and object, radians
         tp: time to next periapse, in original time units. Negative if only one periapse and in the past
