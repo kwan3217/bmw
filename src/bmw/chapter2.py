@@ -109,7 +109,10 @@ def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float
         n = np.sqrt(-1 / (a ** 3))
         rp = a * (1 - e)
     tp = -MM / n
-    t = 2 * np.pi * np.sqrt(a ** 3)
+    if a>0:
+        t = 2 * np.pi * np.sqrt(a ** 3)
+    else:
+        t=float('inf')
     if l_DU is not None:
         p = su_to_cu(p, l_DU, mu, 1, 0, inverse=True)
         a = su_to_cu(a, l_DU, mu, 1, 0, inverse=True)
