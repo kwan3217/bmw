@@ -1,5 +1,19 @@
 """
-Bate, Mueller, White chapter 1 -- Canonical units
+Bate, Mueller, White chapter 1
+
+TWO-BODY ORBITAL MECHANICS
+[ ] 1.1 Historical Background and Basic Laws
+[ ] 1.2 The N-Body Problem
+[ ] 1.3 The Two-Body Problem
+[ ] 1.4 Constants of the Motion
+[ ] 1.5 The Trajectory Equation
+[ ] 1.6 Relating \script{E} and $h$ to the Geometry of an Orbit
+[ ] 1.7 The Elliptical Orbit
+[ ] 1.8 The Circular Orbit
+[ ] 1.9 The Parabolic Orbit
+[ ] 1.10 The Hyperbolic Orbit
+[/] 1.11 Canonical Units
+  * su_to_cu()
 
 These algorithms make use of canonical units. Canonical units are distance and time units
 relating to a particular central body, such that the GM of that body is 1. In canonical

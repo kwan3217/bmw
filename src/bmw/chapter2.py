@@ -1,5 +1,26 @@
 """
 Bate, Mueller, White chapter 2 -- Orbital elements from state vector
+
+Chapter 2 ORBIT DETERMINATION FROM OBSERVATIONS
+[ ] 2.1 Historical Background
+[ ] 2.2 Coordinate Systems
+[ ] 2.3 Classical Orbital Elements
+[/] 2.4 Determining the Orbital Elements from \vec{r} and \vec{v}
+ * elorb()
+[ ] 2.5 Determining \vec{r} and \vec{v} from the Orbital Elements
+[ ] 2.6 Coordinate Transformations
+[ ] 2.7 Orbit Determination from a Single Radar Observation
+[/] 2.8 SEZ to IJK Transformation Using an Ellipsoid Earth Model
+ * This is largely implemented in kwanmath.geodesy::lla2xyz() and ::xyz2lla()
+   but using different algorithms
+[ ] 2.9 The Measurement of Time
+[/] 2.10 Orbit Determination from Three Position Vectors
+ * herrick_gibbs() which actually implements the algorithm as given in Vallado
+[ ] 2.11 Orbit Determination from Optical Sightings
+[ ] 2.12 Improving a Preliminary Orbit by Differential Correction
+[ ] 2.13 Space Surveillance
+[ ] 2.14 Type and Location of Sensors
+[ ] 2.15 Ground Track of a Satellite
 """
 import math
 from collections import namedtuple
