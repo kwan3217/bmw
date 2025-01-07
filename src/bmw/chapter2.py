@@ -24,6 +24,7 @@ Chapter 2 ORBIT DETERMINATION FROM OBSERVATIONS
 """
 import math
 from collections import namedtuple
+from dataclasses import dataclass
 
 import numpy as np
 from kwanmath.vector import vlength, vcross, vangle, vcomp, vdot, vdecomp
