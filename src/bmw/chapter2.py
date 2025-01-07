@@ -30,7 +30,20 @@ from kwanmath.vector import vlength, vcross, vangle, vcomp, vdot, vdecomp
 
 from .chapter1 import su_to_cu
 
-Elorb = namedtuple('elorb', ['p', 'a', 'e', 'i', 'an', 'ap', 'ta', 'tp', 'rp', 'MM', 'n', 't'])
+@dataclass
+class Elorb:
+    p:float=None # semilatus-rectum
+    a:float=None     # A  Semimajor axis
+    e:float=None     # EC Eccentricity
+    i:float=None     # IN Inclination
+    an:float=None   # OM Longitude of ascending node
+    ap:float=None    # W  Argument of periapse
+    ta:float=None # TA True anomaly
+    tp:'datetime|float'=None # Tp Time of periapse
+    rp:float=None    # AD Apoapse radius
+    MM:float=None     # MA Mean anomaly
+    n:float=None     # N  Mean motion
+    t:float=None     # PR Orbit period
 
 
 def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float=None)->Elorb:
