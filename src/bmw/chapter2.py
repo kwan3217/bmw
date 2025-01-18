@@ -47,7 +47,7 @@ class Elorb:
     t:float=None     # PR Orbit period
 
 
-def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float=None)->Elorb:
+def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float=0, deg:bool=False)->Elorb:
     """
     Given state vector, calculate orbital elements.
 
@@ -58,7 +58,10 @@ def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float
                  that the units are already canonical.
     :param mu: Gravity parameter, implies distance and time units. Only used for canonical unit conversion, and
                therefore ignored if l_DU is not passed.
-    :param t0: If passed, use this as the reference epoch for time of periapse
+    :param t0: If passed, use this as the reference time value for input state. Time of periapse will be expressed
+               on the same scale. If not passed, time of periapse is relative to the time of the input state
+    :param deg: If True, angular elements i, an, ap, ta, MM are converted to degrees and angular rate n is
+                converted to deg/s. Otherwise units are radians and rad/s.
     return
       a named tuple
         p:  semi-parameter, distance from focus to orbit at TA=+-90deg, in original distance units, always positive for
@@ -131,11 +134,17 @@ def elorb(rv:np.ndarray, vv:np.ndarray, l_DU:float=None, mu:float=None, t0:float
         p = su_to_cu(p, l_DU, mu, 1, 0, inverse=True)
         a = su_to_cu(a, l_DU, mu, 1, 0, inverse=True)
         tp = su_to_cu(tp, l_DU, mu, 0, 1, inverse=True)
-        if t0 is not None:
-            tp += t0
+        tp += t0
         rp = su_to_cu(rp, l_DU, mu, 1, 0, inverse=True)
         n = su_to_cu(n, l_DU, mu, 0, -1, inverse=True)
         t = su_to_cu(t, l_DU, mu, 0, 1, inverse=True)
+    if deg:
+        i=np.rad2deg(i)
+        an = np.rad2deg(an)
+        ap = np.rad2deg(ap)
+        ta = np.rad2deg(ta)
+        MM = np.rad2deg(MM)
+        n  = np.rad2deg(n)
     return Elorb(p=p, a=a, e=e, i=i, an=an, ap=ap, ta=ta, tp=tp, rp=rp, MM=MM, n=n, t=t)
 
 
